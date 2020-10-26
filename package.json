@@ -1,0 +1,16 @@
+{
+  "name": "explore-craft-cms",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "Rob Brennan <rob@therobbrennan.com> (therobbrennan.com)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRobBrennan/explore-craft-cms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TheRobBrennan/explore-craft-cms/issues"
+  },
+  "homepage": "https://github.com/TheRobBrennan/explore-craft-cms#readme"
+}
