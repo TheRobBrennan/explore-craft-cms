@@ -31,3 +31,5 @@ $ mkdir -p docker-config/nginx
 ### PHP
 
 Create the Dockerfile for our PHP container at `docker-config/php/Dockerfile`. This container's sole responsibility is to run `php-fpm` - which will parse our PHP files and return appropriate responses.
+
+One benefit of creating our PHP image in this manner is that we can do other things with it down the line - such as mounting temporary test code, deploying to different environments, etc.
