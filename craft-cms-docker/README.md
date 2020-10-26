@@ -57,3 +57,29 @@ Let's define a `docker-compose.yml` file to have a set of containers executed as
 One crucial enhancement here is that we have mounted a shared `cpresources` directory in our `php` and `nginx` containers. This was necessary because our application assumes that our web server and PHP server both have access to the same filesystem - which is not the case when they are split into separate containers. By mounting that shared `cpresources` directory, we give the `nginx` container access to any changes or writes from our `php` container.
 
 Please see `craft-cms-docker/docker-compose.yml` for additional details about our Docker compose file.
+
+## Start the Craft CMS project
+
+With our Docker compose file defined, we can start our application:
+
+```sh
+# Start the application - See https://docs.docker.com/compose/reference/overview/ for more details of the docker-compose CLI
+$ docker-compose up
+
+# OPTIONAL: If you would like to force a fresh build of the images and containers before starting the application
+$ docker-compose up --build
+```
+
+You should be able to see the Craft CMS installation page at [http://localhost/admin/](http://localhost/admin/).
+
+Feel free to play around with your Dockerized app 🤓
+
+When done, press `CTRL+C` to stop the containers.
+
+```sh
+# If you would like to stop your application and keep the containers intact next time you start the project
+$ docker-compose stop
+
+# If you would like to destroy and remove the containers created by Docker compose
+$ docker-compose rm
+```
