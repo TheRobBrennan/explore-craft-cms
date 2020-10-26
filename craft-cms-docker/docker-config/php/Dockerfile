@@ -23,9 +23,6 @@ RUN apt-get update && apt-get install -y \
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 
-# Install prestissimo - a composer plugin that downloads packages in parallel to speed up the installation process.
-RUN composer global require hirak/prestissimo
-
 # Set PHP ini settings
 RUN echo "upload_max_filesize = 10M" > /usr/local/etc/php/php.ini && \
     echo "post_max_size = 10M" >> /usr/local/etc/php/php.ini && \
