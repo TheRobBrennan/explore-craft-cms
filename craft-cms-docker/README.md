@@ -33,3 +33,19 @@ $ mkdir -p docker-config/nginx
 Create the Dockerfile for our PHP container at `docker-config/php/Dockerfile`. This container's sole responsibility is to run `php-fpm` - which will parse our PHP files and return appropriate responses.
 
 One benefit of creating our PHP image in this manner is that we can do other things with it down the line - such as mounting temporary test code, deploying to different environments, etc.
+
+### nginx
+
+Create the Dockerfile for our nginx container at `docker-config/nginx/Dockerfile`. This container will use nginx to respond to incoming traffic, respond immediately with a static file, or pass the request on to our PHP container.
+
+#### Custom nginx configuration
+
+We need to override the default nginx configuration to have it forward certain requests to our PHP container. Please see `docker-config/nginx/default.conf` for more details.
+
+The default configuration we are specifying is a pretty standard setup where an nginx server should attempt to server requests using files from the local disk and, if no matching file can be found, transform the request into a request for `index.php` and forward the request to another host/port using fastCGI.
+
+The most important piece for us to focus on is this line - where we are passing the request to our PHP container.
+
+```
+fastcgi_pass php:9000;
+```
