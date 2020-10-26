@@ -49,3 +49,11 @@ The most important piece for us to focus on is this line - where we are passing 
 ```
 fastcgi_pass php:9000;
 ```
+
+## Create a Docker compose file
+
+Let's define a `docker-compose.yml` file to have a set of containers executed as a single set. Note how we are specifying hostnames such as `php`, `nginx`, and `database`. This will allow our Dockerized app to refer to specific hosts within this configuration. Remember where we had "fastcgi_pass php:9000;" in our nginx configuration? This is where the hostname `php` is defined. 🤓
+
+One crucial enhancement here is that we have mounted a shared `cpresources` directory in our `php` and `nginx` containers. This was necessary because our application assumes that our web server and PHP server both have access to the same filesystem - which is not the case when they are split into separate containers. By mounting that shared `cpresources` directory, we give the `nginx` container access to any changes or writes from our `php` container.
+
+Please see `craft-cms-docker/docker-compose.yml` for additional details about our Docker compose file.
