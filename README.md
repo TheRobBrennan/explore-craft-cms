@@ -39,6 +39,12 @@ composer --version
 # Composer version 2.0.2 2020-10-25 23:03:59
 ```
 
+# Let's go!
+
+After we have verified our development environment is configured correctly, it's time to dive in and start Dockerizing a Craft CMS project.
+
+Please refer to `./craft-cms-docker` - inspired by the tutorial [A Craft CMS Development Workflow With Docker: Part 1 - Local Development](https://mattgrayisok.com/a-craft-cms-development-workflow-with-docker-part-1-local-development)
+
 # Resources
 
 ## A Craft CMS Development Workflow With Docker
