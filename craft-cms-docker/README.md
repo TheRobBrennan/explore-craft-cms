@@ -122,3 +122,20 @@ $ chmod 777 src/web/images
 # Ignore this folder so that we don't include test uploads as part of our source control
 $ echo '*\n!.gitignore' > src/web/images/.gitignore
 ```
+
+## What about logs?
+
+If you have not mounted Craft's `storage` folder to the `php` container, Craft will be writing its log files to the container's file system and not our host system.
+
+To view logs for the `php` container:
+
+```sh
+# Make sure we're in the correct directory that contains the docker-compose.yml file we are interested in
+$ cd craft-cms-docker
+
+# View the last 200 lines of the application log
+$ docker-compose exec php tail -n 200 /var/www/html/storage/logs/web.log
+
+# Pipe the log file into a text editor (such as VS Code) for easy navigating
+$ docker-compose exec php cat /var/www/html/storage/logs/web.log | code -
+```
