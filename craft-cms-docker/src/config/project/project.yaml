@@ -1,0 +1,17 @@
+dateModified: 1603998680
+email:
+  fromEmail: rob@therobbrennan.com
+  fromName: '[DOCKER] Craft CMS Sandbox'
+  transportType: craft\mail\transportadapters\Sendmail
+system:
+  edition: solo
+  live: true
+  name: '[DOCKER] Craft CMS Sandbox'
+  schemaVersion: 3.5.13
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true
