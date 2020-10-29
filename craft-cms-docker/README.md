@@ -93,3 +93,17 @@ If you have followed the _Getting Started_ instructions, your Craft CMS applicat
 You should be able to see the Craft CMS installation page at [http://localhost/admin/](http://localhost/admin/).
 
 Follow the instructions provided by the installation wizard. When finished, you will be at the main dashboard to configure your Craft CMS project.
+
+## Set up an asset source for image uploads
+
+Notice that our `docker-compose.yml` has our `./src/web` directory mounted in the `nginx` and `php` containers. This is so that any files that are written by PHP to this folder will actually be written to our host filesystem and immediately available in our `nginx` container.
+
+To define an asset volume, navigate from the Craft CMS dashboard to `Settings > Content - Assets > Volumes` and then click on `+ New volume`
+
+Create a new asset volume with the following settings:
+
+- Name: `Local`
+- Handle: `local`
+- Assets in this volume have public URLs: `Enabled`
+- Base URL: `@web/images`
+- File System Path: `/var/www/html/web/images`
