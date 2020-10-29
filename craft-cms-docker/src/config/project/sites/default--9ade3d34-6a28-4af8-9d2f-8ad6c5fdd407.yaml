@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en-US
+name: '[DOCKER] Craft CMS Sandbox'
+primary: true
+siteGroup: ce9e9c87-8838-473e-a84a-996bed2992ef
+sortOrder: 1

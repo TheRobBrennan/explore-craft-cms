@@ -5,6 +5,12 @@
   "keywords": [],
   "author": "Rob Brennan <rob@therobbrennan.com> (therobbrennan.com)",
   "license": "ISC",
+  "scripts": {
+    "start": "cd craft-cms-docker && docker-compose up",
+    "start:clean": "cd craft-cms-docker && docker-compose up --build",
+    "stop": "cd craft-cms-docker && docker-compose stop",
+    "destroy": "cd craft-cms-docker && docker-compose rm"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TheRobBrennan/explore-craft-cms.git"
