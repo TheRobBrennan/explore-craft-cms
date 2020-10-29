@@ -107,3 +107,18 @@ Create a new asset volume with the following settings:
 - Assets in this volume have public URLs: `Enabled`
 - Base URL: `@web/images`
 - File System Path: `/var/www/html/web/images`
+
+Let's try uploading an image to our asset library. Navigate from the Craft CMS dashboard to `Assets,` make sure `Local` is selected, and then click on `Upload files`
+
+If you can upload an image, continue to the next section. Otherwise, you may need to set relaxed permissions on your host filesystem by doing something like:
+
+```sh
+$ cd craft-cms-docker
+
+# Make sure that our images directory is created and set relaxed permissions
+$ mkdir src/web/images
+$ chmod 777 src/web/images
+
+# Ignore this folder so that we don't include test uploads as part of our source control
+$ echo '*\n!.gitignore' > src/web/images/.gitignore
+```
