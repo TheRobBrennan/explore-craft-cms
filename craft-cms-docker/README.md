@@ -83,3 +83,13 @@ $ docker-compose stop
 # If you would like to destroy and remove the containers created by Docker compose
 $ docker-compose rm
 ```
+
+# Install and configure Craft CMS
+
+If you have followed the _Getting Started_ instructions, your Craft CMS application is ready to be installed and configured.
+
+## Install Craft CMS
+
+You should be able to see the Craft CMS installation page at [http://localhost/admin/](http://localhost/admin/).
+
+Follow the instructions provided by the installation wizard. When finished, you will be at the main dashboard to configure your Craft CMS project.
