@@ -211,3 +211,24 @@ Please see `craft-cms-docker/.gitlab-ci.yml` for details.
 [A Craft CMS Development Workflow With Docker: Part 4 - Docker In Production](https://mattgrayisok.com/a-craftcms-development-workflow-with-docker-part-4-docker-in-production) starts by encouraging you to install `Docker` and `docker-compose` with a simple shell script on a server hosted somewhere (such as Digital Ocean, AWS, Azure, etc.)
 
 The real magic here lies in the annotated `craft-cms-docker/.gitlab-ci.yml` file - outlining key steps in the `before_script` and `deploy` sections that automatically deploy changes to the `master` branch to a specific server.
+
+# Testing
+
+[A Craft CMS Development Workflow With Docker: Part 5 - Testing](https://mattgrayisok.com/a-craft-cms-development-workflow-with-docker-part-5-testing) is a great read for testing your application.
+
+## Content
+
+One approach is to test our site in a state similar to our staging or production environments. First, get the site into a representative state locally and dump the database from our `mysql` container. We can restore this dump before running our tests in CI to make sure we're testing against a known state:
+
+```sh
+# Navigate to the directory containing our desired docker-compose.yml file
+$ cd craft-cms-docker
+
+# Create a directory to store our database dump
+$ mkdir dbdumps
+
+# Execute mysqldump within our locally running container and create a new file
+$ docker-compose exec database mysqldump -u project -p"project" project > dbdumps/dump.sql
+```
+
+We will want to have our CI process use a modified version of our Docker compose file. See `craft-cms-docker/docker-compose-ci.yml`
