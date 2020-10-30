@@ -1,10 +1,10 @@
-dateModified: 1604013693
+dateModified: 1604080258
 email:
   fromEmail: rob@therobbrennan.com
   fromName: '[DOCKER] Craft CMS Sandbox'
   transportType: craft\mail\transportadapters\Sendmail
 system:
-  edition: solo
+  edition: pro
   live: true
   name: '[DOCKER] Craft CMS Sandbox'
   schemaVersion: 3.5.13
