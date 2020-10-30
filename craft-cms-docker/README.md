@@ -205,3 +205,9 @@ Let's review all of the things that our CI process is doing:
 - Uploading our built PHP and nginx images to the container registry
 
 Please see `craft-cms-docker/.gitlab-ci.yml` for details.
+
+# Docker in Production
+
+[A Craft CMS Development Workflow With Docker: Part 4 - Docker In Production](https://mattgrayisok.com/a-craftcms-development-workflow-with-docker-part-4-docker-in-production) starts by encouraging you to install `Docker` and `docker-compose` with a simple shell script on a server hosted somewhere (such as Digital Ocean, AWS, Azure, etc.)
+
+The real magic here lies in the annotated `craft-cms-docker/.gitlab-ci.yml` file - outlining key steps in the `before_script` and `deploy` sections that automatically deploy changes to the `master` branch to a specific server.

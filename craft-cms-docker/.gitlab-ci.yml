@@ -21,6 +21,8 @@ before_script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
   - apk update
   - apk upgrade
+
+  # For automated updates, store our SSH key defined in the environment variable "PRODUCTION_SSH_KEY" so our SSH client can use it for deployment
   #- apk add openssh-client
   #- eval $(ssh-agent -s)
   #- mkdir -p ~/.ssh
@@ -61,10 +63,12 @@ test:
 deploy:
   stage: deploy
   script:
+    # TODO - Double check the user, server IP, and folder. Note how this can be extended to login and push code to different servers (staging, production, etc)
+    # Log in to our server and perform the Docker `pull` and `up -d` commands on our behalf
     - ssh -i ~/.ssh/production_rsa root@your.server.ip 'cd ~/craft-in-docker && docker-compose pull && docker-compose up -d'
   only:
     - master
   # Uncomment this if you want the deployment to be manual via the GitLab UI
-  when: manual
+  # when: manual
   environment:
     name: production
