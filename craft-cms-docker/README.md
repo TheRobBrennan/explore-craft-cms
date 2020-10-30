@@ -179,3 +179,29 @@ $ docker-compose run buildchain yarn add npm-watch --dev
 Note that we have also added a `watch` section in `craft-cms-docker/docker-config/buildchain/package.json`
 
 To see this in action, run `docker-compose up --build buildchain` and then watch as the compilation process runs if you change any of the `src/assets/css` or `src/assets/js` content.
+
+# Continuous Integration (CI) with Docker and GitLab
+
+[A Craft CMS Development Workflow With Docker: Part 3 - Continuous Integration](https://mattgrayisok.com/a-craft-cms-development-workflow-with-docker-part-3-continuous-integration) does an excellent job explaining why GitLab was chosen to host the repo - and for the CI/CD process.
+
+GitLab offers a free, private container registry for your Docker images. As of this writing, I did come across an announcement from GitHub on September 1st, 2020, which introduces their container registry - [Introducing GitHub Container Registry](https://github.blog/2020-09-01-introducing-github-container-registry/)
+
+Let's review all of the things that our CI process is doing:
+
+- Installing all the requirements in our before_script, including docker-compose
+- Building our buildchain image, which includes
+  - Downloading the node base image from docker hub
+  - Adding our package.json to it
+  - Running yarn install to create our node_modules directory
+  - Executing our buildchain to compile assets
+- Building our PHP image, which includes
+  - Downloading the pl2p-fpm base image from docker hub
+  - Installing all of Craft's dependencies
+  - Copying our files in
+  - Running `composer install`
+- Building our nginx image, which includes
+  - Downloading the nginx image from docker hub
+  - Copying our files in
+- Uploading our built PHP and nginx images to the container registry
+
+Please see `craft-cms-docker/.gitlab-ci.yml` for details.
