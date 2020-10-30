@@ -6,6 +6,8 @@
   "author": "Rob Brennan <rob@therobbrennan.com> (therobbrennan.com)",
   "license": "ISC",
   "scripts": {
+    "build": "cd craft-cms-docker && docker-compose up buildchain",
+    "build:clean": "cd craft-cms-docker && docker-compose up --build buildchain",
     "start": "cd craft-cms-docker && docker-compose up",
     "start:clean": "cd craft-cms-docker && docker-compose up --build",
     "stop": "cd craft-cms-docker && docker-compose stop",
