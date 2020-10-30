@@ -1,17 +1,17 @@
 {
-  "name": "explore-craft-cms",
+  "name": "craft-cms-docker",
   "version": "0.0.0",
   "description": "",
   "keywords": [],
   "author": "Rob Brennan <rob@therobbrennan.com> (therobbrennan.com)",
   "license": "ISC",
   "scripts": {
-    "build": "cd craft-cms-docker && npm run build",
-    "build:clean": "cd craft-cms-docker && npm run build:clean",
-    "start": "cd craft-cms-docker && npm start",
-    "start:clean": "cd craft-cms-docker && npm run start:clean",
-    "stop": "cd craft-cms-docker && npm run stop",
-    "destroy": "cd craft-cms-docker && npm run destroy"
+    "build": "docker-compose up buildchain",
+    "build:clean": "docker-compose up --build buildchain",
+    "start": "docker-compose up",
+    "start:clean": "docker-compose up --build",
+    "stop": "docker-compose stop",
+    "destroy": "docker-compose rm"
   },
   "repository": {
     "type": "git",
