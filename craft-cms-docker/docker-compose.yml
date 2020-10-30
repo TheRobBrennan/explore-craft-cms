@@ -64,3 +64,4 @@ services:
 volumes:
   db-data:
   cpresources:
+  node-modules:
