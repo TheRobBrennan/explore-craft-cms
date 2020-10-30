@@ -6,12 +6,12 @@
   "author": "Rob Brennan <rob@therobbrennan.com> (therobbrennan.com)",
   "license": "ISC",
   "scripts": {
-    "build": "cd craft-cms-docker && docker-compose up buildchain",
-    "build:clean": "cd craft-cms-docker && docker-compose up --build buildchain",
-    "start": "cd craft-cms-docker && docker-compose up",
-    "start:clean": "cd craft-cms-docker && docker-compose up --build",
-    "stop": "cd craft-cms-docker && docker-compose stop",
-    "destroy": "cd craft-cms-docker && docker-compose rm"
+    "build": "cd craft-cms-docker && npm run build",
+    "build:clean": "cd craft-cms-docker && npm run build:clean",
+    "start": "cd craft-cms-docker && npm start",
+    "start:clean": "cd craft-cms-docker && npm run start:clean",
+    "stop": "cd craft-cms-docker && npm run stop",
+    "destroy": "cd craft-cms-docker && npm run destroy"
   },
   "repository": {
     "type": "git",
