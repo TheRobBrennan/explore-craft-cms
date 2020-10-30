@@ -139,3 +139,43 @@ $ docker-compose exec php tail -n 200 /var/www/html/storage/logs/web.log
 # Pipe the log file into a text editor (such as VS Code) for easy navigating
 $ docker-compose exec php cat /var/www/html/storage/logs/web.log | code -
 ```
+
+# Create a buildchain in Docker
+
+Let's look at an example of how we might create a buildchain that will build our source files into compiled assets.
+
+```sh
+# Navigate to the directory containing our desired docker-compose.yml file
+$ cd craft-cms-docker
+
+# Create a directory to house all of the configuration needed for our new docker image
+$ mkdir -p docker-config/buildchain
+
+# Create directories for our source files
+$ mkdir -p src/assets/css
+$ mkdir -p src/assets/js
+
+# Create directories for our compiled files
+$ mkdir -p src/web/assets/css
+$ mkdir -p src/web/assets/js
+
+# Ignore compiled files from source control
+$ echo '*\n!.gitignore' > src/web/assets/css/.gitignore
+$ echo '*\n!.gitignore' > src/web/assets/js/.gitignore
+```
+
+## BONUS: Add npm-watch
+
+Let's have our container recompile whenever changes are made to our assets.
+
+```sh
+# Navigate to the directory containing our desired docker-compose.yml file
+$ cd craft-cms-docker
+
+# Add npm-watch
+$ docker-compose run buildchain yarn add npm-watch --dev
+```
+
+Note that we have also added a `watch` section in `craft-cms-docker/docker-config/buildchain/package.json`
+
+To see this in action, run `docker-compose up --build buildchain` and then watch as the compilation process runs if you change any of the `src/assets/css` or `src/assets/js` content.
