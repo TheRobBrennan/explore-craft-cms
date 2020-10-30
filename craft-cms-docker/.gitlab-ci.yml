@@ -31,9 +31,10 @@ before_script:
 build:
   stage: build
   script:
-    # Execute our buildchain
+    # If we have images that have NOT changed, please use the existing image(s) in this process
     - docker pull $PHP_CONTAINER_RELEASE_IMAGE || true
     - docker pull $BUILDCHAIN_IMAGE || true
+    # Execute our buildchain
     - docker-compose run --rm buildchain yarn run build
     - docker-compose push buildchain
     # Build our Docker images
