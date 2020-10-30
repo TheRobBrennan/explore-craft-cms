@@ -232,3 +232,7 @@ $ docker-compose exec database mysqldump -u project -p"project" project > dbdump
 ```
 
 We will want to have our CI process use a modified version of our Docker compose file. See `craft-cms-docker/docker-compose-ci.yml`
+
+# Performance
+
+Please see [A Craft CMS Development Workflow With Docker: Part 6 - Performance](https://mattgrayisok.com/a-craft-cms-development-workflow-with-docker-part-6-performance) for running Craft CMS within a Docker container.
