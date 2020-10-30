@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: ./docker-config/buildchain/Dockerfile
     volumes:
+      # Mount our node-modules folder to persist across containers
+      - node-modules:/project/node_modules
       # If any changes are made within the container to package.json, they will be reflected in the package.json we have checked into source control
       - ./docker-config/buildchain/package.json:/project/package.json
       # We're mounting the entire project into the buildchain container so that it has access to everything
