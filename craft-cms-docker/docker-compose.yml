@@ -1,6 +1,8 @@
 version: "2"
 services:
   buildchain:
+    # If you are using GitLab CI, specify the location of your registry
+    # image: registry.gitlab.com/[your-username]/[your-project-slug]/buildchain:latest
     build:
       context: .
       dockerfile: ./docker-config/buildchain/Dockerfile
