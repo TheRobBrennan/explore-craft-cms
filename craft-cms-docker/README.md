@@ -236,3 +236,32 @@ We will want to have our CI process use a modified version of our Docker compose
 # Performance
 
 Please see [A Craft CMS Development Workflow With Docker: Part 6 - Performance](https://mattgrayisok.com/a-craft-cms-development-workflow-with-docker-part-6-performance) for running Craft CMS within a Docker container.
+
+# Multi Developer Workflow
+
+Please see [A Craft CMS Development Workflow With Docker: Part 7 - Multi Developer Workflow](https://mattgrayisok.com/a-craft-cms-development-workflow-with-docker-part-7-multi-developer-workflow) on discussing ideas, challenges, and possible solutions for handling multiple developers working on a Craft CMS project.
+
+## The Development Environment
+
+Sage advice:
+
+> Anything required to go from a freshly cloned repo to deploying an updated version of the project is codified within the repo itself.
+
+## Database Schema
+
+Craft CMS offers a Project Config setting that will track any schema changes within the repo.
+
+The easiest thing to do is add the following to `config/general.php`:
+
+```php
+'useProjectConfigFile' => true,
+```
+
+Beware - here be Dragons!
+
+![https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Lenox_Globe_Dragons.png/300px-Lenox_Globe_Dragons.png](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Lenox_Globe_Dragons.png/300px-Lenox_Globe_Dragons.png)
+
+Some common frustrations that may arise from this method include:
+
+- Manual merges of `project.yaml`
+- Slug/handle collisions
