@@ -22,7 +22,7 @@ before_script:
   - apk update
   - apk upgrade
 
-  # For automated updates, store our SSH key in a variable that can be used by our SSH client in the deployment step
+  # For automated updates, store our SSH key defined in the environment variable "PRODUCTION_SSH_KEY" so our SSH client can use it for deployment
   #- apk add openssh-client
   #- eval $(ssh-agent -s)
   #- mkdir -p ~/.ssh
