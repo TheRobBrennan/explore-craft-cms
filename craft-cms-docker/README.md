@@ -163,3 +163,19 @@ $ mkdir -p src/web/assets/js
 $ echo '*\n!.gitignore' > src/web/assets/css/.gitignore
 $ echo '*\n!.gitignore' > src/web/assets/js/.gitignore
 ```
+
+## BONUS: Add npm-watch
+
+Let's have our container recompile whenever changes are made to our assets.
+
+```sh
+# Navigate to the directory containing our desired docker-compose.yml file
+$ cd craft-cms-docker
+
+# Add npm-watch
+$ docker-compose run buildchain yarn add npm-watch --dev
+```
+
+Note that we have also added a `watch` section in `craft-cms-docker/docker-config/buildchain/package.json`
+
+To see this in action, run `docker-compose up --build buildchain` and then watch as the compilation process runs if you change any of the `src/assets/css` or `src/assets/js` content.

@@ -11,6 +11,8 @@ services:
       - ./docker-config/buildchain/package.json:/project/package.json
       # We're mounting the entire project into the buildchain container so that it has access to everything
       - ./src:/project/src
+    # Change the command that runs when we boot our container
+    command: yarn run watch
 
   nginx:
     build:
