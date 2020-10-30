@@ -1,5 +1,15 @@
 version: "2"
 services:
+  buildchain:
+    build:
+      context: .
+      dockerfile: ./docker-config/buildchain/Dockerfile
+    volumes:
+      # If any changes are made within the container to package.json, they will be reflected in the package.json we have checked into source control
+      - ./docker-config/buildchain/package.json:/project/package.json
+      # We're mounting the entire project into the buildchain container so that it has access to everything
+      - ./src:/project/src
+
   nginx:
     build:
       context: .
