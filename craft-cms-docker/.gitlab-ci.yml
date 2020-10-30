@@ -52,8 +52,10 @@ test:
     # Use the Docker compose file we created for CI
     - docker-compose -f docker-compose-ci.yml up -d
     - sleep 30;
+
     # Create our MySQL database using the data dump we generated
     - cat dbdumps/dump.sql | docker exec -i $(docker-compose ps -q database) mysql -u project -p"project" project
+
     # Run Lighthouse against your home page, generate a report, and store that report as a GitLab CI Asset that can be reviewed at a later time
     - mkdir reports && chmod 777 reports
     - wget https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json -O ./chrome.json
