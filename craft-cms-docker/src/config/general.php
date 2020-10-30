@@ -24,6 +24,9 @@ return [
 
         // The secure key Craft will use for hashing and encrypting data
         'securityKey' => App::env('SECURITY_KEY'),
+
+        // Run Craft CMS in headless mode - https://craftcms.com/docs/3.x/config/config-settings.html#headlessmode
+        'headlessMode' => true,
     ],
 
     // Dev environment settings
